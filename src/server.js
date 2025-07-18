@@ -13,18 +13,20 @@ await connectDB();
 const app = express();
 
 const allowedOrigins = [
+  // 'http://localhost:3000',
   'https://mini-library-manager-front.onrender.com',
 ];
 
-const corsOptions = {
+app.use(cors({
   origin: allowedOrigins,
   credentials: true,
   methods: ["GET", "POST", "DELETE", "PUT"]
-};
+}));
 
-app.use(cors(corsOptions));
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+
+app.use('/uploads', express.static('uploads')); 
+
 app.use("/api/books", bookRouter);
 app.use("/api/users", userRouter);
 app.use("/", logRouter);

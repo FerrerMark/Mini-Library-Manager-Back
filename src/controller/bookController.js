@@ -57,13 +57,13 @@ export const addBook = async (req, res) => {
     const { title, genre } = req.body;
     if (!title || !genre) return res.status(400).json({ message: "Missing title or genre" });
 
-    // const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
     const book = await Book.create({
       title,
       genre,
       author: userId,
-      // imageUrl,
+      imageUrl,
     });
 
     return res.status(201).json(book);
