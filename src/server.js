@@ -5,7 +5,6 @@ import cors from "cors";
 import { connectDB } from "./config/db.js";
 import bookRouter from "./routes/bookRoute.js";
 import userRouter from "./routes/userRoute.js"; 
-import { verifyToken, authorize } from "./middleware/authMiddleware.js";
 import logRouter from "./routes/logRoute.js";
 
 dotenv.config();
@@ -13,21 +12,23 @@ await connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  'https://mini-library-manager-front.onrender.com',
+];
+
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: allowedOrigins,
+  credentials: true,
   methods: ["GET", "POST", "DELETE", "PUT"]
 };
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
-
-
-
 app.use("/api/books", bookRouter);
 app.use("/api/users", userRouter);
 app.use("/", logRouter);
 
-// Test route
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
