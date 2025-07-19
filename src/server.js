@@ -13,7 +13,8 @@ await connectDB();
 const app = express();
 
 const allowedOrigins = [
-  'https://mini-library-manager.onrender.com/'
+  'https://mini-library-manager.onrender.com',
+  'https://mini-library-manager.onrender.com/',
 ];
 
 app.use(cors({
