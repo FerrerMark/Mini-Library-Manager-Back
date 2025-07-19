@@ -13,7 +13,6 @@ await connectDB();
 const app = express();
 
 const allowedOrigins = [
-  // 'http://localhost:3000',
   'https://mini-library-manager-front.onrender.com',
 ];
 
