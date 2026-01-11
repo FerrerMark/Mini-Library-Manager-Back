@@ -6,12 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node src/server.js",
-    "start": "node src/server.js"
+    "start": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
@@ -24,5 +23,7 @@
     "multer": "^2.0.2",
     "nodemon": "^3.1.10",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
